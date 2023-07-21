@@ -14,8 +14,8 @@
 
         }
         public boolean launch() {
-            double launchExplosionChance = 0.04 * ((double) cargoCarried / cargoLimit);
-            double random = (Math.random() * 100) + 1;
+            double launchExplosionChance = 4 * ((double) getCargoCarried() / getCargoLimit());
+            double random = (Math.random() * 100 + 1);
             if (random <= launchExplosionChance) {
                 return false;
             } else {
@@ -23,8 +23,8 @@
             }
         }
         public boolean land() {
-            double landCrashChance = 0.08 * ((double) cargoCarried / cargoLimit);
-            double random = (Math.random() * 100) + 1;
+            double landCrashChance = 8 * ((double) getCargoCarried() / getCargoLimit());
+            double random = (Math.random() * 100 + 1);
             if (random <= landCrashChance) {
                 return false;
             } else {

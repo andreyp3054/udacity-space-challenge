@@ -14,8 +14,8 @@ public class U1 extends Rocket {
 
     }
     public boolean launch() {
-        double launchExplosionChance = 0.05 * ((double) cargoCarried / cargoLimit);
-        double random = (Math.random() * 100) + 1;
+        double launchExplosionChance = 5 * ((double) getCargoCarried() / getCargoLimit());
+        double random = (Math.random() * 100 + 1);
         if (random <= launchExplosionChance) {
             return false;
         } else {
@@ -23,8 +23,8 @@ public class U1 extends Rocket {
         }
     }
     public boolean land() {
-        double landCrashChance = 0.01 * ((double) cargoCarried / cargoLimit);
-        double random = (Math.random() * 100) + 1;
+        double landCrashChance = 0.01 * ((double) getCargoCarried() / getCargoLimit());
+        double random = (Math.random() * 100 + 1);
         if (random <= landCrashChance) {
             return false;
         } else {

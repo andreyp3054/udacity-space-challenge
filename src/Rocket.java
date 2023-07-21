@@ -75,17 +75,6 @@ public class Rocket implements SpaceShip{
     }
 
     @Override
-//    public int canCarry(Item item) {
-//        int code = 0;
-//       if(item.weight + getCurrentWeight() < getCargoLimit()){
-//           code = 1;
-//       } else if (item.weight + getCurrentWeight() == getCargoLimit()){
-//           code = 2;
-//       } else if(item.weight + getCurrentWeight() > getCargoLimit()){
-//           code = 3;
-//       }
-//       return code;
-//    }
 
     public boolean canCarry(Item item){
         if(item.weight + getCargoCarried() <= getCargoLimit()) {
