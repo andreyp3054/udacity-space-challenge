@@ -131,10 +131,10 @@ public ArrayList<Rocket> loadU1 (ArrayList<Item> item) {
 
     public int runSimulation(ArrayList<Rocket> fleet){
         int totalCost = 0;
-        for (int i = 0; i < fleet.size(); i++){
-            while(!fleet.get(i).launch() || !fleet.get(i).land()) {
-                fleet.get(i).launch();
-                fleet.get(i).land();
+        for (Rocket rocket : fleet) {
+            while (!rocket.launch() || !rocket.land()) {
+                rocket.launch();
+                rocket.land();
                 numberOfCrashedRockets++;
             }
         }
