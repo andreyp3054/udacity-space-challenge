@@ -1,4 +1,4 @@
-public class Rocket implements SpaceShip{
+public abstract class Rocket implements SpaceShip {
     private int rocketCost;
     private int currentWeight;
     private int rocketWeight;
@@ -74,14 +74,24 @@ public class Rocket implements SpaceShip{
         return true;
     }
 
-    @Override
-
-    public boolean canCarry(Item item){ 
-        return item.weight + getCargoCarried() <= getCargoLimit();
+    public Rocket(int rocketCost, int maxWeight, int rocketWeight, int cargoCarried, int cargoLimit) {
+        this.rocketCost = rocketCost;
+        this.maxWeight = maxWeight;
+        this.rocketWeight = rocketWeight;
+        this.cargoCarried = cargoCarried;
+        this.cargoLimit = cargoLimit;
     }
 
     @Override
     public void carry(Item item) {
         this.cargoCarried += item.weight;
     }
+
+    @Override
+
+    public boolean canCarry(Item item) {
+        return item.weight + getCargoCarried() <= getCargoLimit();
+    }
 }
+
+

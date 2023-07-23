@@ -1,7 +1,8 @@
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Simulation {
     File phase1 = new File("phase-1.txt");
     File phase2 = new File("phase-2.txt");
@@ -11,7 +12,6 @@ public class Simulation {
     ArrayList<Rocket> fleet = new ArrayList<>();
     int numberOfCrashedRockets = 0;
 
-
     int numberOfU1Rockets = 0;
     int numberOfU2Rockets = 0;
 
@@ -20,11 +20,11 @@ public class Simulation {
 
     public ArrayList<Item> loadItems(String user) {
         System.out.println("LOADING ITEMS...");
-        if(user.equals("1")){
+        if (user.equals("1")) {
             loadPhase1();
-        } else if (user.equals("2")){
+        } else if (user.equals("2")) {
             loadPhase2();
-        } else if (user.equals("12")){
+        } else if (user.equals("12")) {
             loadPhase1();
             loadPhase2();
         }
@@ -58,10 +58,10 @@ public class Simulation {
     }
 
 
-public ArrayList<Rocket> loadU1 (ArrayList<Item> item) {
+    public ArrayList<Rocket> loadU1(ArrayList<Item> item) {
         Rocket rocketU1 = new U1();
         numberOfU1Rockets++;
-        for(int i = 0; i < item.size(); i++) {
+        for (int i = 0; i < item.size(); i++) {
             if (rocketU1.canCarry(item.get(i))) {
                 rocketU1.carry(item.get(i));
                 System.out.println(item.get(i) + " item is loaded");
@@ -84,21 +84,21 @@ public ArrayList<Rocket> loadU1 (ArrayList<Item> item) {
                     i = -1;
                 }
             }
-            if(item.size() == 0 && rocketU1.getCargoCarried() != 0){
+            if (item.size() == 0 && rocketU1.getCargoCarried() != 0) {
                 fleet.add(rocketU1);
                 System.out.println(fleet.size() + " ROCKET IS ADDED");
             }
         }
 
-    System.out.println(fleet.size() + " ROCKETS IN THE FLEET");
+        System.out.println(fleet.size() + " ROCKETS IN THE FLEET");
         return fleet;
-}
+    }
 
 
-    public ArrayList<Rocket> loadU2 (ArrayList<Item> item) {
+    public ArrayList<Rocket> loadU2(ArrayList<Item> item) {
         Rocket rocketU2 = new U2();
         numberOfU2Rockets++;
-        for(int i = 0; i < item.size(); i++) {
+        for (int i = 0; i < item.size(); i++) {
             if (rocketU2.canCarry(item.get(i))) {
                 rocketU2.carry(item.get(i));
                 System.out.println(item.get(i) + " item is loaded");
@@ -121,7 +121,7 @@ public ArrayList<Rocket> loadU1 (ArrayList<Item> item) {
                     i = -1;
                 }
             }
-            if(item.size() == 0){
+            if (item.size() == 0) {
                 fleet.add(rocketU2);
                 System.out.println(fleet.size() + " ROCKET IS ADDED");
             }
@@ -129,7 +129,7 @@ public ArrayList<Rocket> loadU1 (ArrayList<Item> item) {
         return fleet;
     }
 
-    public int runSimulation(ArrayList<Rocket> fleet){
+    public int runSimulation(ArrayList<Rocket> fleet) {
         int totalCost = 0;
         for (Rocket rocket : fleet) {
             while (!rocket.launch() || !rocket.land()) {
@@ -144,5 +144,5 @@ public ArrayList<Rocket> loadU1 (ArrayList<Item> item) {
         System.out.println("Total cost including the crashed ones: " + totalCost + " MILLION");
         return totalCost;
     }
-    }
+}
 
