@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Main{
+public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Simulation simulate = new Simulation();
         Scanner keyboard = new Scanner(System.in);
@@ -10,14 +10,20 @@ public class Main{
         // Just change loadU1 to "loadU2" to simulate U2 Rockets
         simulate.runSimulation(simulate.loadU1(simulate.loadItems(user)));
 
+        int totalCostU1 = simulate.totalCost;
+
+        Simulation second = new Simulation();
+
         System.out.println("Type in [1] to load phase 1 items; [2] to load phase [2]; [12] for both");
         user = keyboard.nextLine();
-        simulate.loadItems(user);
-//        simulate.runSimulation(simulate.loadU2(simulate.loadItems(user)));
+        second.runSimulation(second.loadU2(second.loadItems(user)));
+        int totalCostU2 = second.totalCost;
 
-        // Why 12 on the second U2 is 0 items loaded? YOU have to reset something
-        // 3. e format ang code
-        //4. e print sa last ahay pinakabarato or tipid nga type of rocket
+        if (totalCostU1 < totalCostU2) {
+            System.out.println("U1 Rocket: " + totalCostU1 + " Million is cheaper than " + "U2 Rockets: " + totalCostU2 + " Million");
+        } else if (totalCostU2 < totalCostU1) {
+            System.out.println("U2 Rocket: " + totalCostU2 + " Million is cheaper than " + "U1 Rocket: " + totalCostU1 + " Million");
+        }
 
     }
 }

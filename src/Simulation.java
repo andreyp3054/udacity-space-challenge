@@ -11,6 +11,7 @@ public class Simulation {
     ArrayList<Item> item = new ArrayList<>();
     ArrayList<Rocket> fleet = new ArrayList<>();
     int numberOfCrashedRockets = 0;
+    int totalCost = 0;
 
     int numberOfU1Rockets = 0;
     int numberOfU2Rockets = 0;
@@ -46,13 +47,15 @@ public class Simulation {
 
     public ArrayList<Item> loadPhase2() {
         System.out.print("Loading Phase 2: ");
+        int phaseItems = 0;
         while (read2.hasNextLine()) {
             String temporary = read2.nextLine();
             String[] splitter = temporary.split("=", 2);
             Item temporaryItem = new Item(splitter[0], Integer.parseInt(splitter[1]));
             item.add(temporaryItem);
+            phaseItems++;
         }
-        System.out.println(8 + " items loaded for Phase 2");
+        System.out.println(phaseItems + " items loaded for Phase 2");
         System.out.println(item.size() + " total loaded items");
         return item;
     }
@@ -130,11 +133,10 @@ public class Simulation {
     }
 
     public int runSimulation(ArrayList<Rocket> fleet) {
-        int totalCost = 0;
         for (Rocket rocket : fleet) {
             while (!rocket.launch() || !rocket.land()) {
-                rocket.launch();
-                rocket.land();
+//                rocket.launch();
+//                rocket.land();
                 numberOfCrashedRockets++;
             }
         }
