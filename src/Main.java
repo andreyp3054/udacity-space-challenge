@@ -1,29 +1,30 @@
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
+        String phase1FilePath = "SpaceMission/src/resources/phase-1.txt";
+        String phase2FilePath = "SpaceMission/src/resources/phase-2.txt";
         Simulation simulate = new Simulation();
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("Type in [1] to load phase 1 items; [2] to load phase [2]; [12] for both");
-        String user = keyboard.nextLine();
-        // Just change loadU1 to "loadU2" to simulate U2 Rockets
-        simulate.runSimulation(simulate.loadU1(simulate.loadItems(user)));
 
-        int totalCostU1 = simulate.totalCost;
+        ArrayList<Item> phase1List = simulate.loadItems(phase1FilePath);
+        ArrayList<Item> phase2List = simulate.loadItems(phase2FilePath);
+        ArrayList<Item> completeItems = mergeItems(phase1List, phase2List);
+        ArrayList<Rocket> loadedItems = simulate.loadU1(completeItems);
 
-        Simulation second = new Simulation();
+        PrintResult resultU1 = simulate.runSimulation(loadedItems);
 
-        System.out.println("Type in [1] to load phase 1 items; [2] to load phase [2]; [12] for both");
-        user = keyboard.nextLine();
-        second.runSimulation(second.loadU2(second.loadItems(user)));
-        int totalCostU2 = second.totalCost;
-
-        if (totalCostU1 < totalCostU2) {
-            System.out.println("U1 Rocket: " + totalCostU1 + " Million is cheaper than " + "U2 Rockets: " + totalCostU2 + " Million");
-        } else if (totalCostU2 < totalCostU1) {
-            System.out.println("U2 Rocket: " + totalCostU2 + " Million is cheaper than " + "U1 Rocket: " + totalCostU1 + " Million");
-        }
 
     }
+
+    public static ArrayList<Item> mergeItems(ArrayList<Item> baseList, ArrayList<Item> phase2List) {   //to merge items and sort them
+        baseList.addAll(phase2List);
+        Collections.sort(baseList); //sort items in ascending weight
+        return baseList;
+    }
+
+//        public String compareRocketTypes(int U1, int U2){
+//
+//        }
 }

@@ -84,13 +84,13 @@ public abstract class Rocket implements SpaceShip {
 
     @Override
     public void carry(Item item) {
-        this.cargoCarried += item.weight;
+        this.cargoCarried += item.weight();
     }
 
     @Override
 
     public boolean canCarry(Item item) {
-        return item.weight + getCargoCarried() <= getCargoLimit();
+        return item.weight() + getCargoCarried() <= getCargoLimit();
     }
 }
 
