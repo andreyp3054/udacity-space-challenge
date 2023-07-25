@@ -31,6 +31,7 @@ public class Simulation {
             } else if (!rocketU1.canCarry(i)) {
                 fleetU1.add(rocketU1);
                 rocketU1 = new U1();
+                rocketU1.carry(i);
             }
         }
         if (rocketU1.getCargoCarried() != 0) {    // if the last rocket has item, add to fleet
@@ -48,6 +49,7 @@ public class Simulation {
             } else if (!rocketU2.canCarry(i)) {
                 fleetU2.add(rocketU2);
                 rocketU2 = new U2();
+                rocketU2.carry(i);
             }
         }
         if (rocketU2.getCargoCarried() != 0) {    // if the last rocket has item, add to fleet
@@ -56,7 +58,7 @@ public class Simulation {
         return fleetU2;
     }
 
-    public PrintResult runSimulation(ArrayList<Rocket> fleet) {
+    public Results runSimulation(ArrayList<Rocket> fleet) {
         int totalCost = 0;
         int successfulRockets = 0;
         int crashedRockets = 0;
@@ -68,6 +70,6 @@ public class Simulation {
                 crashedRockets++;
             }
         }
-        return new PrintResult(totalCost, successfulRockets, crashedRockets);
+        return new Results(totalCost, successfulRockets, crashedRockets);
     }
 }

@@ -1,4 +1,3 @@
-
 public record Item(String name, int weight) implements Comparable<Item> {
 
     @Override

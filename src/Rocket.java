@@ -1,68 +1,25 @@
 public abstract class Rocket implements SpaceShip {
-    private int rocketCost;
-    private int currentWeight;
-    private int rocketWeight;
+    private final int rocketCost;
+    private final int rocketWeight;
     private int totalCost;
-    private int maxWeight;
+    private final int maxWeight;
 
     private int cargoCarried;
-    private int cargoLimit;
+    private final int cargoLimit;
 
     public int getRocketCost() {
         return rocketCost;
-    }
-
-    public void setRocketCost(int rocketCost) {
-        this.rocketCost = rocketCost;
-    }
-
-    public int getCurrentWeight() {
-        return currentWeight;
-    }
-
-    public void setCurrentWeight(int currentWeight) {
-        this.currentWeight = currentWeight;
-    }
-
-    public int getRocketWeight() {
-        return rocketWeight;
-    }
-
-    public void setRocketWeight(int rocketWeight) {
-        this.rocketWeight = rocketWeight;
-    }
-
-    public int getTotalCost() {
-        return totalCost;
-    }
-
-    public void setTotalCost(int totalCost) {
-        this.totalCost = totalCost;
-    }
-
-    public int getMaxWeight() {
-        return maxWeight;
-    }
-
-    public void setMaxWeight(int maxWeight) {
-        this.maxWeight = maxWeight;
     }
 
     public int getCargoCarried() {
         return cargoCarried;
     }
 
-    public void setCargoCarried(int cargoCarried) {
-        this.cargoCarried = cargoCarried;
-    }
 
     public int getCargoLimit() {
         return cargoLimit;
     }
 
-    public void setCargoLimit(int cargoLimit) {
-        this.cargoLimit = cargoLimit;
-    }
 
     @Override
     public boolean launch() {
