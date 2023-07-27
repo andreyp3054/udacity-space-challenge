@@ -1,13 +1,7 @@
-public class Item {
-    String name;
-    int weight;
+public record Item(String name, int weight) implements Comparable<Item> {
 
-    public Item(String name, int weight) {
-        this.name = name;
-        this.weight = weight;
-    }
-
-    public String toString() {
-        return this.name + " = " + weight;
+    @Override
+    public int compareTo(Item anotherItem) {
+        return Integer.compare(this.weight, anotherItem.weight);
     }
 }
